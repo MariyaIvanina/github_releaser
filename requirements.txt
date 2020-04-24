@@ -1,0 +1,6 @@
+requests==2.22.0
+httpretty==0.9.7
+sure==1.4.11
+bump2version==0.5.11
+flake8==3.7.9
+python-dateutil==2.8.1
