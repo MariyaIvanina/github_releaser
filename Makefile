@@ -12,8 +12,8 @@ venv:
 	touch $(VENV_PATH)/bin/activate
 
 release: install-dependencies
-	${PYTHON} -m bumpversion --new-version ${v} build --tag --tag-name "v${v}"
-	${PYTHON} -m bumpversion patch --no-tag
+	${PYTHON} -m bumpversion --new-version ${v} build --tag --tag-name "v${v}" --allow-dirty
+	${PYTHON} -m bumpversion patch --no-tag --allow-dirty
 	git push origin master "v${v}"
 
 build-release: venv
