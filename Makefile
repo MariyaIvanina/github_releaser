@@ -12,6 +12,8 @@ venv:
 	touch $(VENV_PATH)/bin/activate
 
 release: install-dependencies
+	git config --global user.email "example@gmail.com"                                                                            
+	git config --global user.name "Example"
 	${PYTHON} -m bumpversion --new-version ${v} build --tag --tag-name "v${v}" --allow-dirty
 	${PYTHON} -m bumpversion patch --no-tag --allow-dirty
 	git push origin master "v${v}"
