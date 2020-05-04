@@ -14,7 +14,8 @@ RUN touch /venv/bin/activate
 
 ARG version
 ARG prod
+ARG githubtoken
 
 COPY ./ ./
 
-RUN if [ "$prod" = "true" ]; then make release v=$version; else if [ "$version" != "" ]; then make build-release v=$version; fi ; fi
+RUN if [ "$prod" = "true" ]; then make release v=$version githubtoken=$githubtoken; else if [ "$version" != "" ]; then make build-release v=$version; fi ; fi
