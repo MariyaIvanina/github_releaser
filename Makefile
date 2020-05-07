@@ -11,14 +11,15 @@ install-dependencies: requirements.txt
 venv: 
 	touch $(VENV_PATH)/bin/activate
 
-release: install-dependencies                                                                            
+release: install-dependencies
+	git config --global user.email "Jenkins"                                                                    
 	git config --global user.name "Jenkins"
 	git pull
 	git merge develop
-	${PYTHON} -m bumpversion --new-version ${v} build --tag --tag-name "v${v}" --allow-dirty
+	${PYTHON} -m bumpversion --new-version ${v} build --tag --tag-name ${v} --allow-dirty
 	${PYTHON} -m bumpversion patch --no-tag --allow-dirty
 	git remote set-url origin https://${githubtoken}@github.com/MariyaIvanina/github_releaser
-	git push origin master "v${v}"
+	git push origin master ${v}
 	git checkout develop
 	git merge master
 	git push origin develop

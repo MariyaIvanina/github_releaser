@@ -19,3 +19,6 @@ ARG githubtoken
 COPY ./ ./
 
 RUN if [ "$prod" = "true" ]; then make release v=$version githubtoken=$githubtoken; else if [ "$version" != "" ]; then make build-release v=$version; fi ; fi
+RUN ls -la /backend/
+RUN rm -rf /backend/.git/
+RUN ls -la /backend/
