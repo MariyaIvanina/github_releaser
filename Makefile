@@ -17,10 +17,10 @@ release: install-dependencies
 	git pull
 	git merge develop
 	${PYTHON} -m bumpversion --new-version ${v} build --tag --tag-name ${v} --allow-dirty
-	${PYTHON} -m bumpversion release --no-tag --allow-dirty
+	${PYTHON} -m bumpversion patch --no-tag --allow-dirty
 	git remote set-url origin https://${githubtoken}@github.com/MariyaIvanina/github_releaser
 	git push origin master ${v}
-	${PYTHON} -m bumpversion --new-version ${v} build
+	${PYTHON} -m bumpversion --new-version ${v} build --no-tag --allow-dirty
 
 build-release: venv
 	${PYTHON} -m bumpversion --new-version ${v} build --no-commit --no-tag --allow-dirty
